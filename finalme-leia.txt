@@ -1,0 +1,4 @@
+tema: Site de dowload de jogos para emulador
+detalhes: Um site para baixar rooms de jogos para serem usados em emuladores
+mebros: Brunno GOnçalves Coutinho Filho
+bibliotecas usadas: Bootstrap
