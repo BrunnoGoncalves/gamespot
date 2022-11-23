@@ -3,7 +3,8 @@ session_start();
 
 if (isset($_SESSION['user_id']) &&
     isset($_SESSION['user_email'])) {
-
+      
+    
         
 	include "db_con.php";
 
@@ -66,13 +67,13 @@ if (isset($_SESSION['user_id']) &&
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Adicionar jogo</a>
+          <a class="nav-link" href="add-jogo.php">Adicionar jogo</a>
         <li class="nav-item">
         <li class="nav-item">
-          <a class="nav-link" href="#">Adicionar genero</a>
+          <a class="nav-link" href="add-genero.php">Adicionar genero</a>
         <li class="nav-item">
         <li class="nav-item">
-          <a class="nav-link" href="#">Adicionar plataforma</a>
+          <a class="nav-link" href="add-prod.php">Adicionar produtor</a>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">logout</a>
         </li>
@@ -91,9 +92,9 @@ if (isset($_SESSION['user_id']) &&
 
 
 
-
-        <h4 class="text-center"> Melhores produtos</h4>
-        <table class="table table-bordered shadow">
+  <!-- lista dos jogos -->
+        <h4 class="text-center">Todos os jogos</h4>
+        <table class="table table-bordered shadow"style="width: 90%; max-width: 50rem;" >
 			<thead>
 				<tr>
 					<th>#</th>
@@ -105,15 +106,19 @@ if (isset($_SESSION['user_id']) &&
 			
 			
             
-                    <th>Action</th>
+                    <th>Ação</th>
 				</tr>
         </thead>
         
         <tbody>
-            <?php foreach ($jogo as $jog){?>
+          
+            <?php 
+            $i=0;
+            foreach ($jogo as $jog){ $i++;
+            ?>
 
         
-            <td>1</td>
+            <td><?=$i?></td>
           
             <td>
             <img width="100" src="imagens/capas/<?=$jog['cover']?>"><a class="link-dark d-block text-center" href="imagens/arquivos/<?=$jog['Arquivo']?>"><?=$jog['title']?>
@@ -165,15 +170,105 @@ if (isset($_SESSION['user_id']) &&
 
             
             <a href="#"
-            class="btn btn-warning">DELETAR</a>
+            class="btn btn-danger">DELETAR</a>
             </td>
     </tr>
     <?php } ?>
+    </tbody>
             </table>
-            <?php }?>
+            <?php }?>  
+            <?php  if($genero ==0 ){ ?>
+    empty
+
+<?php }else{ ?>
+  <!-- Lista de generos -->
+<h4 class="text-center">Todos os Generos</h4>
+        <table class="table table-bordered shadow" style="width: 90%; max-width: 50rem;">
+			<thead>
+				<tr>
+					<th>#</th>
+				
+					<th>Genero</th>
+
+			
+			
+            
+                    <th>Ação</th>
+				</tr>
+        </thead>
+        <tbody>
+          <?php
+          $j=0;
+          foreach ($genero as $gen)  {
+            $j++; 
+            ?>
+         <tr>
+          <td><?=$j?></td>
+          <td><?=$gen['name'] ?></td>
+          
+            <td>
+            <a href="#"
+            class="btn btn-warning">EDITAR</a>
+
+            
+            <a href="#"
+            class="btn btn-danger">DELETAR</a>
+            </td>
+         </tr>
+          <?php } ?>
         </tbody>
-        
-        
+          </table>
+            <?php } ?>
+           
+            <?php  if($prod ==0 ){ ?>
+    empty
+
+<?php }else{ ?>
+  <!-- Lista de generos -->
+<h4 class="text-center">Todos os pordutores</h4>
+<table class="table table-bordered shadow"style="width: 90%; max-width: 50rem;">
+			<thead>
+				<tr>
+					<th>#</th>
+				
+					<th>produtores</th>
+
+			
+			
+            
+                    <th>Ação</th>
+				</tr>
+        </thead>
+        <tbody>
+          <?php
+          $k=0;
+          foreach ($prod as $prods)  {
+            $k++; 
+            ?>
+         <tr>
+          <td><?=$k?></td>
+          <td><?=$prods['name'] ?></td>
+          
+            <td>
+            <a href="#"
+            class="btn btn-warning">EDITAR</a>
+
+            
+            <a href="#"
+            class="btn btn-danger">DELETAR</a>
+            </td>
+         </tr>
+          <?php } ?>
+        </tbody>
+          </table>
+
+<?php } ?>
+
+            
+            
+
+            
+            
 </body>
 </html>
 

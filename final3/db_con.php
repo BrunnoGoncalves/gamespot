@@ -1,12 +1,12 @@
 <?php 
-
+# nome do server
 
 $sName = "localhost";
-
+# username
 $uName = "root";
-
+# senha
 $pass = "";
-
+#nome da data base
 $db_name = "gamespot";
 
 try {
