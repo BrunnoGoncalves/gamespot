@@ -67,15 +67,15 @@ if (isset($_SESSION['user_id']) &&
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="add-jogo.php">Adicionar jogo</a>
+          <a class="nav-link" href="add-jogo.php">Adicionar Jogo</a>
         <li class="nav-item">
         <li class="nav-item">
-          <a class="nav-link" href="add-genero.php">Adicionar genero</a>
+          <a class="nav-link" href="add-genero.php">Adicionar Gênero</a>
         <li class="nav-item">
         <li class="nav-item">
-          <a class="nav-link" href="add-prod.php">Adicionar produtor</a>
+          <a class="nav-link" href="add-prod.php">Adicionar Produtor</a>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">logout</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
         
       
@@ -126,8 +126,8 @@ if (isset($_SESSION['user_id']) &&
               echo "indefinido";
             }else{
               foreach ($prod as $prods){
-                if ($prods['id']==$jog['Produtor']) {
-                  echo $prods['prod'];
+                if ($prods['id']==$jog['id-prod']) {
+                  echo $prods['Produtor'];
                 }
               }
             }
@@ -141,7 +141,7 @@ if (isset($_SESSION['user_id']) &&
             }else{
               foreach ($prod as $prods){
                 if ($prods['id']==$jog['Produtor']) {
-                  echo $prods['prod'];
+                  echo $prods['name'];
                 }
               }
             }
@@ -155,8 +155,8 @@ if (isset($_SESSION['user_id']) &&
               echo "indefinido";
             }else{
               foreach ($genero as $gen){
-                if ($gen['id']==$jog['Produtor']) {
-                  echo $gen['prod'];
+                if ($gen['id']==$jog['Genero']) {
+                  echo $gen['name'];
                 }
               }
             }
@@ -182,7 +182,7 @@ if (isset($_SESSION['user_id']) &&
 
 <?php }else{ ?>
   <!-- Lista de generos -->
-<h4 class="text-center">Todos os Generos</h4>
+<h4 class="text-center">Todos os  Gêneros</h4>
         <table class="table table-bordered shadow" style="width: 90%; max-width: 50rem;">
 			<thead>
 				<tr>
@@ -225,7 +225,7 @@ if (isset($_SESSION['user_id']) &&
 
 <?php }else{ ?>
   <!-- Lista de generos -->
-<h4 class="text-center">Todos os pordutores</h4>
+<h4 class="text-center">Todos os produtores</h4>
 <table class="table table-bordered shadow"style="width: 90%; max-width: 50rem;">
 			<thead>
 				<tr>

@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id']) &&
  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="adimin.php">ADM</a>
+    <a class="navbar-brand" href="admin.php">ADM</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,37 +59,32 @@ if (isset($_SESSION['user_id']) &&
   </div>
 </nav>
 <form action="php/add-prod.php"
-           method="post" 
-           class="shadow p-4 rounded mt-5"
-           style="width: 90%; max-width: 50rem;">
-
-     	<h1 class="text-center ">
-     	Adicionar produtor
-     	</h1>
-     	<?php if (isset($_GET['error'])) { ?>
+method="post" class="shadow p-4 rounded-shadow" style="width: 90%;">
+  <h1 class="text-center">
+    Adicionar produtor</h1>
+    <?php if (isset($_GET['erro'])) { ?>
           <div class="alert alert-danger" role="alert">
-			  <?=htmlspecialchars($_GET['error']); ?>
+			  <?=htmlspecialchars($_GET['erro']); ?>
+        <?php }?>  
 		  </div>
-		<?php } ?>
-		<?php if (isset($_GET['success'])) { ?>
+      <?php if (isset($_GET['sucesso'])) { ?>
           <div class="alert alert-success" role="alert">
-			  <?=htmlspecialchars($_GET['success']); ?>
-		  </div>
-		<?php } ?>
-     	<div class="mb-3">
-		    <label class="form-label">
-		           	Nome do produtor
-		           </label>
+			  <?=htmlspecialchars($_GET['sucesso']); ?>
+        <?php }?>  
+        </div>
+    <div class="mb-3">
+		    <label 
+		           class="form-label">Nome do produtor </label>
 		    <input type="text" 
 		           class="form-control" 
-		           name="author_name">
-		</div>
-
-	    <button type="submit" 
-	            class="btn btn-primary">
-	            Adicionar produtor</button>
-     </form>
-	</div>
+		           name="nome-prod" 
+		           >
+		  </div>
+      <button type="submit" 
+		          class="btn btn-primary">
+		         Confirmar</button>
+</form>
+  
 </body>
 </html>
 
