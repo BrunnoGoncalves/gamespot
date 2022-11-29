@@ -64,9 +64,6 @@ if (isset($_SESSION['user_id']) &&
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="add-jogo.php">Adicionar Jogo</a>
         <li class="nav-item">
         <li class="nav-item">
@@ -140,7 +137,7 @@ if (isset($_SESSION['user_id']) &&
               echo "indefinido";
             }else{
               foreach ($prod as $prods){
-                if ($prods['id']==$jog['Produtor']) {
+                if ($jogo['id-prod']==$jog['Produtor']) {
                   echo $prods['name'];
                 }
               }
@@ -165,7 +162,7 @@ if (isset($_SESSION['user_id']) &&
             ?>
           </td>
             <td>
-            <a href="#"
+            <a href="editar-jogo.php?id=<?=$jog['id'] ?>"
             class="btn btn-warning">EDITAR</a>
 
             
@@ -207,7 +204,7 @@ if (isset($_SESSION['user_id']) &&
           <td><?=$gen['name'] ?></td>
           
             <td>
-            <a href="#"
+            <a href="editar-gen.php?id=<?=$gen['id'] ?>"
             class="btn btn-warning">EDITAR</a>
 
             
@@ -224,7 +221,7 @@ if (isset($_SESSION['user_id']) &&
     empty
 
 <?php }else{ ?>
-  <!-- Lista de generos -->
+  <!-- Lista de produtores -->
 <h4 class="text-center">Todos os produtores</h4>
 <table class="table table-bordered shadow"style="width: 90%; max-width: 50rem;">
 			<thead>
@@ -250,7 +247,7 @@ if (isset($_SESSION['user_id']) &&
           <td><?=$prods['name'] ?></td>
           
             <td>
-            <a href="#"
+            <a href="editar-prod.php?id=<?=$prods['id'] ?>"
             class="btn btn-warning">EDITAR</a>
 
             

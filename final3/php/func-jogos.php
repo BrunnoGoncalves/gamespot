@@ -13,4 +13,16 @@ function get_all_jogos($con){
     return $jogo;
  }
 
-?>
+ function get_jo($con, $id){
+   $sql  = "SELECT * FROM jogo WHERE id=?";
+   $stmt = $con->prepare($sql);
+   $stmt->execute([$id]);
+
+   if ($stmt->rowCount() > 0) {
+   	  $jo = $stmt->fetch();
+   }else {
+      $jo = 0;
+   }
+
+   return $jo;
+}

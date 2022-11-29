@@ -1,44 +1,38 @@
-<?php
+<?php  
 session_start();
 
+
 if (isset($_SESSION['user_id']) &&
-    isset($_SESSION['user_email'])) {  
-        include "db_con.php";
-        include "php/func-genero.php";
-        $genero = get_all_genero($conn); 
-        include "php/func-prod.php";
-        $prod = get_all_prod($conn);
+    isset($_SESSION['user_email'])) {
 
-        if (isset($_GET['titulo'])){
-          $titulo=$_GET['titulo'];
-        }else $titulo='';
-        
-        if (isset($_GET['descr'])){
-          $descr=$_GET['descr'];
-        }else $descr='';
+	if (!isset($_GET['id'])) {
+		
+        header("Location: admin.php");
+        exit;
+	}
 
-        if (isset($_GET['id_genero'])){
-          $id_genero=$_GET['idgenero'];
-        }else $id_genero='';
+	$id = $_GET['id'];
 
-        if (isset($_GET['id_prod'])){
-          $id_prod=$_GET['idprod'];
-        }else $id_prod='';
-      
-        
-  
-        
+	include "db_con.php";
+
+	include "php/func-jogos.php";
+    $jo = get_jo($conn, $id);
+    
+    
+    if ($jo == 0) {
+    	
+        header("Location: admin.php");
+        exit;
+    }
+
+	include "php/func-genero.php";
+    $genero = get_all_genero($conn);
+
+ 
+	include "php/func-prod.php";
+    $prod= get_all_prod($conn);
+
 ?>
-
-
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +40,7 @@ if (isset($_SESSION['user_id']) &&
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar jogo</title>
+    <title>editar jogo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
@@ -83,7 +77,7 @@ if (isset($_SESSION['user_id']) &&
 <form action="php/add-jogo.php"
 method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" style="width: 90%;">
   <h1 class="text-center">
-    Adicionar jogo</h1>
+    Editar jogo</h1>
     <?php if (isset($_GET['erro'])) { ?>
           <div class="alert alert-danger" role="alert">
 			  <?=htmlspecialchars($_GET['erro']); ?>
@@ -98,7 +92,7 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
 		    <label 
 		           class="form-label">Nome do jogo </label>
 		    <input type="text" 
-        value="<?=$titulo?>"
+        value="<?=$jo['title']?>"
 		           class="form-control" 
 		           name="nome-jogo" 
 		           >
@@ -107,7 +101,7 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
 		    <label 
 		           class="form-label">Descrição do jogo </label>
 		    <input type="text" 
-        value="<?=$descr?>"
+        value="<?=$jo['Descrição']?>"
 		           class="form-control" 
 		           name="descr" 
 		           >
@@ -147,7 +141,7 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
 
         <?php } ?>
                 <?php foreach ($prod as $prods){ ?>
-                    <option value="<?=$prods['id'] ?>"><?=$prods['name'] ?></option>
+                    <option value="<?=$jo['id_prod']  ?>"><?=$prods['name'] ?></option>
                     <?php } ?>
                 </select>
                 
@@ -159,6 +153,7 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
 		           class="form-control" 
 		           name="capa" 
 		           >
+                   <a href="imagens/capas/<?=$jo['cover']?>" class="link-dark">Capa atual</a>
 		  </div>
           <div class="mb-3">
 		    <label 
@@ -167,6 +162,7 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
 		           class="form-control" 
 		           name="arquivo" 
 		           >
+                   <a href="imagens/arquivos/<?=$jo['Arquivo']?>" class="link-dark">Arquivo atual</a>
 		  </div>
       <button type="submit" 
 		          class="btn btn-primary">
