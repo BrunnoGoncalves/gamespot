@@ -49,12 +49,6 @@ $genero = get_all_genero($conn);
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contatos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sobre</a>
-        </li>
-        <li class="nav-item">
           <?php if (isset($_SESSION['user_id'])) {?>
            
           <a class="nav-link" href="admin.php">Adm</a>
