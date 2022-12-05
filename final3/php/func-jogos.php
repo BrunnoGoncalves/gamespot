@@ -26,3 +26,23 @@ function get_all_jogos($con){
 
    return $jo;
 }
+function search_jogo($con, $key){
+   # creating simple search algorithm :) 
+   $key = "%{$key}%";
+
+   $sql  = "SELECT * FROM jogo 
+            WHERE title LIKE ?
+            OR Descrição LIKE ?";
+   $stmt = $con->prepare($sql);
+   $stmt->execute([$key, $key]);
+
+   if ($stmt->rowCount() > 0) {
+        $books = $stmt->fetchAll();
+   }else {
+      $books = 0;
+   }
+
+   return $books;
+}
+
+

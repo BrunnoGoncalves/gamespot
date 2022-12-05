@@ -91,11 +91,17 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
     <div class="mb-3">
 		    <label 
 		           class="form-label">Nome do jogo </label>
-		    <input type="text" 
+		    <input type="text"  hidden
+        value="<?=$jo['id']?>"
+		           class="form-control" 
+		           name="id-jogo" 
+		           >
+                   <input type="text" 
         value="<?=$jo['title']?>"
 		           class="form-control" 
 		           name="nome-jogo" 
 		           >
+                   
 		  </div>
           <div class="mb-3">
 		    <label 
@@ -153,6 +159,8 @@ method="post" enctype="multipart/form-data" class="shadow p-4 rounded-shadow" st
 		           class="form-control" 
 		           name="capa" 
 		           >
+
+                   
                    <a href="imagens/capas/<?=$jo['cover']?>" class="link-dark">Capa atual</a>
 		  </div>
           <div class="mb-3">

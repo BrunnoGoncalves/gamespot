@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id']) &&
         }else $id_genero='';
 
         if (isset($_GET['id_prod'])){
-          $id_prod=$_GET['idprod'];
+          $id_prod=$_GET['id_prod'];
         }else $id_prod='';
       
         

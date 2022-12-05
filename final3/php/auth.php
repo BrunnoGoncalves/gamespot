@@ -25,7 +25,6 @@ if (isset($_POST['email']) &&
 	$location = "../login.php";
 	$ms = "error";
     is_empty($password, $text, $location, $ms, "");
-    
 
     
     $sql = "SELECT * FROM adm
@@ -48,7 +47,7 @@ if (isset($_POST['email']) &&
     			header("Location: ../admin.php");
 
             }else {
-    		
+    			# Error message
     	        $em = " Senha ou email incorreto";
     	        header("Location: ../login.php?error=$em");
     		}
@@ -60,4 +59,4 @@ if (isset($_POST['email']) &&
         $em =" Senha ou email incorreto";
         header("Location: ../login.php?error=$em");
     }
-} ?>
+}

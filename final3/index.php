@@ -1,4 +1,20 @@
+<?php 
+session_start();
 
+    
+        
+include "db_con.php";
+
+
+include "php/func-jogos.php";
+$jogo = get_all_jogos($conn);
+  
+include "php/func-prod.php";
+$prod = get_all_prod($conn);
+
+include "php/func-genero.php";
+$genero = get_all_genero($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +33,7 @@
  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Gamespot.com</a>
+    <a class="navbar-brand" href="index.php">Gamespot.com</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,18 +49,60 @@
           <a class="nav-link" href="#">Sobre</a>
         </li>
         <li class="nav-item">
+          <?php if (isset($_SESSION['user_id'])) {?>
+           
+          <a class="nav-link" href="admin.php">Adm</a>
+        
+         <?php }else{?>
           <a class="nav-link" href="login.php">login</a>
+          <?php }?>
         </li>
+        
        
       
     </div>
   </div>
 </nav>
-<div class="col-md-2"></div>
+<form action="pesquisar.php"
+             method="get" 
+             style="width: 100%; max-width: 30rem">
 
-<div class="col-md-8">
-    <div class="row">
-        <h2 class="text-center"> Melhores produtos</h2> <br> <br>
+       	<div class="input-group my-5">
+		  <input type="text" 
+		         class="form-control"
+		         name="key" 
+		         placeholder="procurar jogo..." 
+		         aria-label="procurar jogo..." 
+		         aria-describedby="basic-addon2">
+
+             <button class="input-group-text
+		                 btn btn-primary" id="basic-addon2">Pesquisar</button>
+		  </button>
+		</div>
+       </form>
+<?php if($jogo==0){ ?>
+
+<?php }else{?>
+
+<div class="pdf-lista d-flex flex-wrap">
+
+<?php foreach($jogo as $jo){?>
+
+
+ <div class="card m-1">
+
+  <img src="imagens/capas/<?=$jo['cover']?>"class="card"> <div class="card-body"><h5 class="card-title"><?=$jo['title']?></h5>
+<p class="card-text"><?=$jo['Descrição']?></p>
+<a href="imagens/arquivos/6388d28c7f9a00.62859846.gba"
+                          class="btn btn-primary"
+                         >baixar</a>
+
+</div>
+<?php } ?>
+</div>
+<?php } ?>
+</div>
+
 
 </div>
 </body>

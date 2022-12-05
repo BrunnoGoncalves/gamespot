@@ -79,6 +79,13 @@ if (isset($_SESSION['user_id']) &&
     </div>
   </div>
 </nav>
+<form   action="pesquisar.php"
+             method="get" 
+             style="width: 100%; max-width: 30rem">> <div class="input-group mb-3">
+  <input type="text" class="form-control" name="key" placeholder="Pesquisar jogo" aria-label="Pesquisar jogo" aria-describedby="basic-addon2">
+<button class="input-group-text
+		                 btn btn-primary" id="basic-addon2">Pesquisar</button>
+</div></form>
 <div class="col-md-2"></div>
 
 <?php  if($jogo ==0 ){ ?>
@@ -137,7 +144,7 @@ if (isset($_SESSION['user_id']) &&
               echo "indefinido";
             }else{
               foreach ($prod as $prods){
-                if ($jogo['id-prod']==$jog['Produtor']) {
+                if ($jog['id-prod']==$jog['Produtor']) {
                   echo $prods['name'];
                 }
               }
@@ -166,8 +173,7 @@ if (isset($_SESSION['user_id']) &&
             class="btn btn-warning">EDITAR</a>
 
             
-            <a href="#"
-            class="btn btn-danger">DELETAR</a>
+    
             </td>
     </tr>
     <?php } ?>
@@ -207,9 +213,7 @@ if (isset($_SESSION['user_id']) &&
             <a href="editar-gen.php?id=<?=$gen['id'] ?>"
             class="btn btn-warning">EDITAR</a>
 
-            
-            <a href="#"
-            class="btn btn-danger">DELETAR</a>
+       
             </td>
          </tr>
           <?php } ?>
@@ -221,7 +225,7 @@ if (isset($_SESSION['user_id']) &&
     empty
 
 <?php }else{ ?>
-  <!-- Lista de produtores -->
+  <!-- Lista de generos -->
 <h4 class="text-center">Todos os produtores</h4>
 <table class="table table-bordered shadow"style="width: 90%; max-width: 50rem;">
 			<thead>
@@ -251,8 +255,7 @@ if (isset($_SESSION['user_id']) &&
             class="btn btn-warning">EDITAR</a>
 
             
-            <a href="#"
-            class="btn btn-danger">DELETAR</a>
+          
             </td>
          </tr>
           <?php } ?>

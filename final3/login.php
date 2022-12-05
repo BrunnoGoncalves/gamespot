@@ -36,8 +36,6 @@ if (!isset($_SESSION['user_id']) &&
 		      style="max-width: 30rem; width: 100%"
 		      method="POST"
 		      action="php/auth.php">
-			
-
               
 		  <h1 class="text-center display-4 pb-5">LOGIN</h1>
 		  <?php if (isset($_GET['error'])) { ?>

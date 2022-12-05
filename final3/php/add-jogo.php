@@ -105,5 +105,3 @@ $res  = $stmt->execute([$titulo,$descr,$prod,$gene,$capa_url,$arqi_url]);
 }
 
 
-
-     
